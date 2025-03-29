@@ -1,7 +1,7 @@
 'use strict';
 import 'dotenv/config';
 // *********************************************************************************
-var host = "https://www.soldapper.com"; // your live domain
+var host = "https://api.mcswap.xyz"; // your live domain
 // host = "http://localhost"; // comment out before production deployment
 var auto = "payment"; // auto open blink in dial.to test window : ignored in prod
 var treasury = "ACgZcmgmAnMDxXxZUo9Zwg2PS6WQLXy63JnnLmJFYxZZ";

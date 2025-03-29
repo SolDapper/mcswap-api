@@ -6,14 +6,14 @@ import mcswap from 'mcswap-sdk';
 import Express from 'express';
 const payment = Express.Router();
 const SOLANA_CONNECTION = new Connection(rpc,"confirmed");
-payment.get('/payment/:format/:escrow',async(req,res)=>{
-    let format = req.params.format;
-    format = format.toLowerCase();
+payment.get('/payment/:format/:escrow/:reference',async(req,res)=>{
+    const _format_ = req.params.format;
+    const format = _format_.toLowerCase();
     const _escrow_ = req.params.escrow;
     const request = {
         "rpc":rpc,
         "display":true,
-        "standard":"nft",
+        "standard":format,
         "escrow":_escrow_,
     };
     const escrow = await mcswap.fetch(request);
@@ -29,7 +29,7 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
             const name = meta_data.result.content.metadata.name;
             const image = meta_data.result.content.links.image;
             const obj = {}
-            obj.label = name;
+            obj.label = "Purchase "+format+" "+name;
             obj.icon = image;
             res.status(200).json(obj);
         }
@@ -38,7 +38,7 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
         }
     }
 });
-payment.route('/payment/:format/:escrow').post(async(req,res)=>{
+payment.route('/payment/:format/:escrow/:reference').post(async(req,res)=>{
     try{
         const buyer  = req.body?.account;
         if(!buyer)throw new Error('missing account');
