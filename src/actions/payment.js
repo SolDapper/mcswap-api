@@ -31,6 +31,8 @@ payment.get('/payment/:format/:escrow/:reference',async(req,res)=>{
             const obj = {}
             obj.label = "Purchase "+_format_+" "+name;
             obj.icon = image;
+            // add the temporary reference file
+            fs.writeFile('./queue/'+reference+'.txt',Date.now(),(err)=>{if(err)throw err;});
             res.status(200).json(obj);
         }
         catch(err){
