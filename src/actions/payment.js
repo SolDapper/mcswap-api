@@ -17,18 +17,9 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
         "standard":"nft",
         "escrow":_escrow_,
     };
-    // const escrow = await mcswap.fetch(request);
-    // console.log(escrow);
-    // const escrow = await mcswap.fetch({
-    //     rpc:rpc,
-    //     display:true,
-    //     standard:format,
-    //     escrow:_escrow_
-    // }).catch(function(err){
-    //     console.log(err);
-    // });
-    res.status(200).json(request);
-
+    const escrow = await mcswap.fetch(request);
+    res.status(200).json(escrow);
+    
     // if(escrow.status=="error"){
     //     escrow.message = "Invalid Listing ID";
     //     res.status(400).json(escrow);
