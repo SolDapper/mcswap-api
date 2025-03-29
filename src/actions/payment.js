@@ -33,13 +33,12 @@ payment.get('/payment/:format/:escrow/:reference',async(req,res)=>{
             obj.label = "Purchase "+_format_+" "+name;
             obj.icon = image;
             // add the temporary reference file
-            fs.writeFile('./queue/'+reference+'.txt',Date.now(),(err)=>{
-                if(err){
-                    console.log("error 1");
-                    res.status(400).json(err);
-                }
-
-            });
+            // fs.writeFile('queue/'+reference+'.txt',Date.now(),(err)=>{
+            //     if(err){
+            //         console.log("error 1");
+            //         res.status(400).json(err);
+            //     }
+            // });
             res.status(200).json(obj);
         }
         catch(err){
