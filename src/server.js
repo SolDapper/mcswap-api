@@ -38,13 +38,12 @@ app.use((req, res, next) => {
 // *********************************************************************************
 // include actions
 import { payment } from './actions/payment.js';
-app.use("/", payment);
+app.use("/payment/*", payment);
+import { queue } from './actions/queue.js';
+app.use("/queue/*", queue);
 // *********************************************************************************
 
 // *********************************************************************************
-// app.get("/actions.json",(req,res)=>{
-//   res.json(rules);
-// });
 app.get("/",(req,res)=>{
   res.json("mcswap-api server");
 });
@@ -52,7 +51,7 @@ app.listen(process.env.PORT || 3300, async() => {
   console.log("mcswap-api is running!");
   const cleanup = setInterval(()=>{
     
-    
+
 
 
 
