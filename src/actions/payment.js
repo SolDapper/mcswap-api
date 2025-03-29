@@ -29,7 +29,7 @@ payment.get('/payment/:format/:escrow/:reference',async(req,res)=>{
             const name = meta_data.result.content.metadata.name;
             const image = meta_data.result.content.links.image;
             const obj = {}
-            obj.label = "Purchase "+format+" "+name;
+            obj.label = "Purchase "+_format_+" "+name;
             obj.icon = image;
             res.status(200).json(obj);
         }
