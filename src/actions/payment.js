@@ -16,10 +16,9 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
         standard:format,
         escrow:_escrow_
     };
-    res.status(400).json(request);
-
-
-    // const escrow = await mcswap.fetch(request).catch(function(err){});
+    const escrow = await mcswap.fetch(request).catch(function(err){});
+    res.status(400).json(escrow);
+    
     // if(escrow.status=="error"){
     //     escrow.message = "Invalid Listing ID";
     //     res.status(400).json(escrow);
