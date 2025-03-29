@@ -50,10 +50,9 @@ app.get("/",(req,res)=>{
 });
 app.listen(process.env.PORT || 3300, async() => {
   console.log("mcswap-api is running!");
-  if(host.includes("localhost") && auto!=false){
-    open("http://localhost:3300/");
-  }
+  const cleanup = setInterval(()=>{
+    console.log("test");
+  }, 1000);
+  if(host.includes("localhost") && auto!=false){open("http://localhost:3300/");}
 });
 // *********************************************************************************
-
-
