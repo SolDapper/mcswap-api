@@ -11,6 +11,8 @@ import open from 'open';
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import fs from 'fs';
+import path from 'path';
 const app = express();
 app.use(bodyParser.json());
 app.options('*', cors(
@@ -48,21 +50,13 @@ app.get("/",(req,res)=>{res.json("mcswap-api server");});
 app.listen(process.env.PORT || 3300, async() => {
   console.log("mcswap-api is running!");
   const cleanup = setInterval(()=>{
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  const files = fs.readdirSync("./src/queue/");
+  const fileDetails = files.map(file => {
+    const filePath = path.join("./src/queue/", file);
+    const stats = fs.statSync(filePath);
+    const now = Date.now();
+    if((now-stats.mtimeMs)>120000){fs.unlink(filePath,(err)=>{if(err){return;}});}
+  });
   }, 10000);
   if(host.includes("localhost") && auto!=false){open("http://localhost:3300/");}
 });

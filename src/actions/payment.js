@@ -7,11 +7,11 @@ import Express from 'express';
 import fs from 'fs';
 const payment = Express.Router();
 const SOLANA_CONNECTION = new Connection(rpc,"confirmed");
-payment.get('/payment/:format/:escrow/:reference',async(req,res)=>{
+payment.get('/payment/:format/:escrow',async(req,res)=>{
     const _format_ = req.params.format;
     const format = _format_.toLowerCase();
     const _escrow_ = req.params.escrow;
-    const reference = req.params.reference;
+    const reference = req.query.memo;
     const request = {
         "rpc":rpc,
         "display":true,
@@ -48,9 +48,10 @@ payment.get('/payment/:format/:escrow/:reference',async(req,res)=>{
         }
     }
 });
-payment.route('/payment/:format/:escrow/:reference').post(async(req,res)=>{
+payment.route('/payment/:format/:escrow').post(async(req,res)=>{
     try{
         const buyer  = req.body?.account;
+        const reference = req.query.memo;
         if(!buyer)throw new Error('missing account');
         let format = req.params.format;
         format = format.toLowerCase();
@@ -70,8 +71,7 @@ payment.route('/payment/:format/:escrow/:reference').post(async(req,res)=>{
         }
         else{
             const escrow = req.params.escrow;
-            const connection = new Connection(rpc,"confirmed");
-            const state = await connection.getAccountInfo(new PublicKey(escrow)).catch(function(error){});
+            const state = await SOLANA_CONNECTION.getAccountInfo(new PublicKey(escrow)).catch(function(error){});
             const encoded = state.data;
             let decoded;
             let mint;
