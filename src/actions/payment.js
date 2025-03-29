@@ -10,15 +10,16 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
     let format = req.params.format;
     format = format.toLowerCase();
     const _escrow_ = req.params.escrow;
-    const request = {
+    const escrow = await mcswap.fetch({
         rpc:rpc,
         display:true,
         standard:format,
         escrow:_escrow_
-    };
-    const escrow = await mcswap.fetch(request).catch(function(err){});
-    res.status(400).json(escrow);
-    
+    }).catch(function(err){
+        console.log(err);
+    });
+    res.status(200).json(escrow);
+
     // if(escrow.status=="error"){
     //     escrow.message = "Invalid Listing ID";
     //     res.status(400).json(escrow);
