@@ -2,23 +2,13 @@
 import Express from 'express';
 import fs from 'fs';
 const queue = Express.Router();
-queue.get('/cancel/:reference',async(req,res)=>{
-
-});
 queue.get('/queue/:reference',async(req,res)=>{
     const reference = req.params.reference;
-
-
-
-
-
-
-
-
-
-
-
-
-    res.status(200).json(reference);
+    if(fs.existsSync("./src/queue/"+reference+".txt")){
+        res.status(200).json("scanned");
+    }
+    else{
+        res.status(200).json("none");
+    }
 });
 export {queue};
