@@ -10,7 +10,6 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
     let format = req.params.format;
     format = format.toLowerCase();
     const _escrow_ = req.params.escrow;
-
     const request = {
         "rpc":rpc,
         "display":true,
@@ -18,28 +17,26 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
         "escrow":_escrow_,
     };
     const escrow = await mcswap.fetch(request);
-    res.status(200).json(escrow);
-    
-    // if(escrow.status=="error"){
-    //     escrow.message = "Invalid Listing ID";
-    //     res.status(400).json(escrow);
-    // }
-    // else{
-    //     try{
-    //         const response = await fetch(rpc,{method:'POST',headers:{"Content-Type":"application/json"},
-    //         body:JSON.stringify({"jsonrpc":"2.0","id":"listing","method":"getAsset","params":{"id":escrow.sellerMint}})});
-    //         const meta_data = await response.json();
-    //         const name = meta_data.result.content.metadata.name;
-    //         const image = meta_data.result.content.links.image;
-    //         const obj = {}
-    //         obj.label = name;
-    //         obj.icon = image;
-    //         res.status(200).json(obj);
-    //     }
-    //     catch(err){
-    //         res.status(400).json(err);
-    //     }
-    // }
+    if(escrow.status=="error"){
+        escrow.message = "Invalid Listing ID";
+        res.status(400).json(escrow);
+    }
+    else{
+        try{
+            const response = await fetch(rpc,{method:'POST',headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({"jsonrpc":"2.0","id":"listing","method":"getAsset","params":{"id":escrow.sellerMint}})});
+            const meta_data = await response.json();
+            const name = meta_data.result.content.metadata.name;
+            const image = meta_data.result.content.links.image;
+            const obj = {}
+            obj.label = name;
+            obj.icon = image;
+            res.status(200).json(obj);
+        }
+        catch(err){
+            res.status(400).json(err);
+        }
+    }
 });
 payment.route('/payment/:format/:escrow').post(async(req,res)=>{
     try{
