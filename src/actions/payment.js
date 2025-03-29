@@ -60,7 +60,7 @@ payment.route('/payment/:format/:escrow').post(async(req,res)=>{
         }
         else{
             const escrow = req.params.escrow;
-            const connection = new Connection(_data_.rpc,"confirmed");
+            const connection = new Connection(rpc,"confirmed");
             const state = await connection.getAccountInfo(new PublicKey(escrow)).catch(function(error){});
             const encoded = state.data;
             let decoded;
