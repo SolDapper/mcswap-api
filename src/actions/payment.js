@@ -10,15 +10,24 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
     let format = req.params.format;
     format = format.toLowerCase();
     const _escrow_ = req.params.escrow;
-    const escrow = await mcswap.fetch({
-        rpc:rpc,
-        display:true,
-        standard:format,
-        escrow:_escrow_
-    }).catch(function(err){
-        console.log(err);
-    });
-    res.status(200).json(escrow);
+
+    const request = {
+        "rpc":rpc,
+        "display":true,
+        "standard":"nft",
+        "escrow":_escrow_,
+    };
+    // const escrow = await mcswap.fetch(request);
+    // console.log(escrow);
+    // const escrow = await mcswap.fetch({
+    //     rpc:rpc,
+    //     display:true,
+    //     standard:format,
+    //     escrow:_escrow_
+    // }).catch(function(err){
+    //     console.log(err);
+    // });
+    res.status(200).json(request);
 
     // if(escrow.status=="error"){
     //     escrow.message = "Invalid Listing ID";
