@@ -2,11 +2,9 @@
 import Express from 'express';
 import fs from 'fs';
 const queue = Express.Router();
-
 queue.get('/cancel/:reference',async(req,res)=>{
-    
-});
 
+});
 queue.get('/queue/:reference',async(req,res)=>{
     const reference = req.params.reference;
 
