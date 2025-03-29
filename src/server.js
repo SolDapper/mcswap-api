@@ -1,7 +1,7 @@
 // *********************************************************************************
 // name: solana-action-express
 // author: @SolDapper
-// repo: github.com/McDegens-DAO/solana-action-express
+// repo: github.com/SolDapper/mcswap-api
 // *********************************************************************************
 
 // *********************************************************************************
@@ -39,14 +39,12 @@ app.use((req, res, next) => {
 // include actions
 import { payment } from './actions/payment.js';
 app.use("/payment/*", payment);
-import { queue } from './actions/queue.js';
-app.use("/queue/*", queue);
+// import { queue } from './actions/queue.js';
+// app.use("/queue/*", queue);
 // *********************************************************************************
 
 // *********************************************************************************
-app.get("/",(req,res)=>{
-  res.json("mcswap-api server");
-});
+app.get("/",(req,res)=>{res.json("mcswap-api server");});
 app.listen(process.env.PORT || 3300, async() => {
   console.log("mcswap-api is running!");
   const cleanup = setInterval(()=>{
