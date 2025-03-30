@@ -31,7 +31,7 @@ payment.get('/payment/:format/:escrow/:reference',async(req,res)=>{
             const name = meta_data.result.content.metadata.name;
             const image = meta_data.result.content.links.image;
             const obj = {}
-            obj.label = "Purchase "+_format_+" "+name;
+            obj.label = "Purchase: "+name;
             obj.icon = image;
             const time = Date.now();
             try{
