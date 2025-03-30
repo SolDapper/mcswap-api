@@ -3,7 +3,7 @@ import 'dotenv/config';
 import Express from 'express';
 // *********************************************************************************
 
-var host = "http://api.mcswap.xyz"; // your live domain
+var host = "https://www.mcswap-pay.xyz"; // your live domain
 // host = "http://localhost"; // comment out for prod
 var treasury = "ACgZcmgmAnMDxXxZUo9Zwg2PS6WQLXy63JnnLmJFYxZZ"; // optional affiliate treasury
 var fee = "0"; // optional affiliate fee
