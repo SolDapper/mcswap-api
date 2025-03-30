@@ -40,8 +40,8 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
             obj.icon = image;
             const time = Date.now();
             try{
-                // const path = './src/queue/'+reference+'.txt';
-                // fs.writeFileSync(path,time.toString());
+                const temp_file = './src/queue/'+reference+'.txt';
+                fs.writeFileSync(temp_file,time.toString());
                 res.status(200).json(obj);
             }
             catch(err){
