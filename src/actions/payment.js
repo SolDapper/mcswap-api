@@ -37,10 +37,12 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
             try{
 
                 console.log(import.meta.dirname);
-                if (!fs.existsSync("queue/")) {
-                    console.log("queue directory not found");
-                }
-                // const temp_file = './src/queue/'+reference+'.txt';
+                // if (!fs.existsSync("../queue")) {
+                //     console.log("queue directory not found");
+                // }
+                const temp_file = '../queue/'+reference+'.txt';
+                console.log(temp_file);
+                
                 // fs.writeFileSync(temp_file,time.toString());
                 res.status(200).json(obj);
             }
