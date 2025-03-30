@@ -35,9 +35,7 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
             obj.icon = image;
             const time = Date.now();
             try{
-                console.log(import.meta.dirname);
                 const temp_file = '/tmp/'+reference+'.txt';
-                console.log(temp_file);
                 fs.writeFileSync(temp_file,time.toString());
                 res.status(200).json(obj);
             }
