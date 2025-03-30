@@ -41,8 +41,8 @@ app.use((req, res, next) => {
 // include actions
 import { payment } from './actions/payment.js';
 app.use("/", payment);
-import { queue } from './actions/queue.js';
-app.use("/", queue);
+import { scanner } from './actions/scanner.js';
+app.use("/", scanner);
 // *********************************************************************************
 
 // *********************************************************************************
