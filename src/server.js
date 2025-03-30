@@ -49,15 +49,15 @@ app.use("/", queue);
 app.get("/",(req,res)=>{res.json("mcswap-api server");});
 app.listen(process.env.PORT || 3300, async() => {
   console.log("mcswap-api is running!");
-  const clean = setInterval(()=>{
-  const files = fs.readdirSync("./src/queue/");
-  const fileDetails = files.map(file => {
-    const filePath = path.join("./src/queue/", file);
-    const stats = fs.statSync(filePath);
-    const now = Date.now();
-    if((now-stats.mtimeMs)>120000){fs.unlink(filePath,(err)=>{if(err){return;}});}
-  });
-  }, cleanup);
+  // const clean = setInterval(()=>{
+  // const files = fs.readdirSync("./src/queue/");
+  // const fileDetails = files.map(file => {
+  //   const filePath = path.join("./src/queue/", file);
+  //   const stats = fs.statSync(filePath);
+  //   const now = Date.now();
+  //   if((now-stats.mtimeMs)>120000){fs.unlink(filePath,(err)=>{if(err){return;}});}
+  // });
+  // }, cleanup);
   if(host.includes("localhost")){open("http://localhost:3300");}
 });
 // *********************************************************************************
