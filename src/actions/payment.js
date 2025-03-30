@@ -13,9 +13,9 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
     const _escrow_ = req.params.escrow;
     const reference = req.query.memo;
 
-    cnonsole.log("_format_", _format_);
-    cnonsole.log("_escrow_", _escrow_);
-    cnonsole.log("reference", reference);
+    console.log("_format_", _format_);
+    console.log("_escrow_", _escrow_);
+    console.log("reference", reference);
 
     const request = {
         "rpc":rpc,
