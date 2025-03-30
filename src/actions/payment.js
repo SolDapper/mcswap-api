@@ -7,11 +7,11 @@ import Express from 'express';
 import fs from 'fs';
 const payment = Express.Router();
 const SOLANA_CONNECTION = new Connection(rpc,"confirmed");
-payment.get('/payment/:format/:escrow',async(req,res)=>{
+payment.get('/payment/:format/:escrow/:reference',async(req,res)=>{
     const _format_ = req.params.format;
     const format = _format_.toLowerCase();
     const _escrow_ = req.params.escrow;
-    const reference = req.query.memo;
+    const reference = req.params.reference;
     const request = {
         "rpc":rpc,
         "display":true,
@@ -48,10 +48,10 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
         }
     }
 });
-payment.route('/payment/:format/:escrow').post(async(req,res)=>{
+payment.route('/payment/:format/:escrow/:reference').post(async(req,res)=>{
     try{
         const buyer  = req.body?.account;
-        const reference = req.query.memo;
+        const reference = req.params.reference;
         if(!buyer)throw new Error('missing account');
         let format = req.params.format;
         format = format.toLowerCase();
@@ -66,6 +66,7 @@ payment.route('/payment/:format/:escrow').post(async(req,res)=>{
                 affiliateFee: fee,
                 buyer: buyer,
                 escrow: escrow,
+                memo: reference
             }
             transaction=await mcswap.splExecute(_transaction_).catch(function(err){});
         }
@@ -99,6 +100,7 @@ payment.route('/payment/:format/:escrow').post(async(req,res)=>{
                 affiliateFee: fee,
                 buyer: buyer,
                 sellerMint: mint,
+                memo: reference
             }
             if(format=="nft"){
                 transaction=await mcswap.nftExecute(_transaction_).catch(function(err){});
