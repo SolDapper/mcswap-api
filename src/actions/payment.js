@@ -42,7 +42,7 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
             try{
 
                 if (!fs.existsSync("./src/queue")) {
-                    console.log("queue directory found");
+                    console.log("queue directory not found");
                 }
                 // const temp_file = './src/queue/'+reference+'.txt';
                 // fs.writeFileSync(temp_file,time.toString());
