@@ -40,8 +40,12 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
             obj.icon = image;
             const time = Date.now();
             try{
-                const temp_file = './src/queue/'+reference+'.txt';
-                fs.writeFileSync(temp_file,time.toString());
+
+                if (!fs.existsSync("./src/queue")) {
+                    console.log("queue directory found");
+                }
+                // const temp_file = './src/queue/'+reference+'.txt';
+                // fs.writeFileSync(temp_file,time.toString());
                 res.status(200).json(obj);
             }
             catch(err){
