@@ -36,7 +36,7 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
             const time = Date.now();
             try{
 
-                if (!fs.existsSync("./queue")) {
+                if (!fs.existsSync("queue/")) {
                     console.log("queue directory not found");
                 }
                 // const temp_file = './src/queue/'+reference+'.txt';
