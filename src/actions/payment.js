@@ -12,11 +12,6 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
     const format = _format_.toLowerCase();
     const _escrow_ = req.params.escrow;
     const reference = req.query.memo;
-
-    console.log("_format_", _format_);
-    console.log("_escrow_", _escrow_);
-    console.log("reference", reference);
-
     const request = {
         "rpc":rpc,
         "display":true,
@@ -41,7 +36,7 @@ payment.get('/payment/:format/:escrow',async(req,res)=>{
             const time = Date.now();
             try{
 
-                if (!fs.existsSync("src/queue")) {
+                if (!fs.existsSync("./queue")) {
                     console.log("queue directory not found");
                 }
                 // const temp_file = './src/queue/'+reference+'.txt';
