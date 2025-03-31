@@ -11,7 +11,4 @@ scanner.get('/scanner/:reference',async(req,res)=>{
         res.status(200).json("none");
     }
 });
-
-
-
 export {scanner};
