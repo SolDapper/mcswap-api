@@ -1,6 +1,6 @@
 {
     "name": "mcswap-api",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "mcswap solana pay api",
     "main": "src/server.js",
     "type": "module",
@@ -17,7 +17,7 @@
         "fs": "^0.0.1-security",
         "http": "^0.0.1-security",
         "https": "^1.0.0",
-        "mcswap-sdk": "^0.5.3",
+        "mcswap-sdk": "^0.5.4",
         "open": "^10.1.0",
         "path": "^0.12.7"
     }
