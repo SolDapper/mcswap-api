@@ -57,15 +57,14 @@ const whitelistFilter = {
   methods: ['GET'], // Specify allowed methods
   credentials: true, // Enable credentials (cookies, authorization headers)
 };
-app.get('/ping', cors(whitelistFilter), async(err,req,res,next)=>{
+app.get('/', cors(whitelistFilter), async(err,req,res,next)=>{
   if(err.message){
     res.status(200).json(err);
   }
   else{
-    res.status(200).json("ok");
+    res.status(200).json("mcswap-api server");
   }
 });
-app.get("/",(req,res)=>{res.status(200).json("mcswap-api server");});
 app.listen(process.env.PORT || 3300, async() => {
   console.log("mcswap-api is running!");
   const clean = setInterval(()=>{
