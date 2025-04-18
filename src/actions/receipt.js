@@ -10,6 +10,24 @@ receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
     // }
     // else{
         const body  = req.body;
+        const msg = '';
+
+        msg += '<table cellpadding="0" cellspacing="0" width="100%">';
+        msg += '<tr>';
+        msg += '<td>&nbsp;a</td>';
+        msg += '<td width="600">b</td>';
+        msg += '<td>&nbsp;c</td>';
+        msg += '</tr>';
+        msg += '</table>';
+
+
+
+
+
+
+
+
+
         let transporter = nodemailer.createTransport({
             service: 'gmail', 
             auth: {
@@ -17,15 +35,14 @@ receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
                 pass: process.env.MAIL_PASS
             }
         });
-        // to: body.Buyer_Email+","+body.Seller_Email,
-        // from: body.Seller_Email,
         let mailOptions = {
+            from: body.Seller_Email,
             sender: body.Seller_Email,
             replyTo: body.Seller_Email,
             to: body.Buyer_Email+","+body.Seller_Email,
             subject: 'Asset Purchase Receipt',
             text: 'Hello from Node.js!',
-            html: '<b>Hello from Node.js!</b>'
+            html: msg
         };
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
