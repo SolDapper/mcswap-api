@@ -51,15 +51,24 @@ const corsOptions = {
     if (whitelist.includes(origin)) {
       callback(null, true); // Allow the request
     } else {
-      callback(null, false); // Deny the request
+      callback(new Error('Not allowed by CORS')); // Deny the request
     }
   },
   methods: ['GET'], // Specify allowed methods
   credentials: true, // Enable credentials (cookies, authorization headers)
 };
-app.get('/ping', cors(corsOptions), async(req,res,next)=>{
-  
+app.get('/ping', cors(corsOptions), async(err,req,res,next)=>{
+
+  console.error(err.message);
+
+  // if (err.message === 'Not allowed by CORS') {
+  //   console.error('CORS error occurred. Exiting application.');
+  //   process.exit(1);
+  // }
+  // res.status(500).send('Something went wrong!');
+
   res.status(200).json("ok");
+
 });
 app.get("/",(req,res)=>{res.status(200).json("mcswap-api server");});
 app.listen(process.env.PORT || 3300, async() => {
