@@ -8,7 +8,7 @@ var host = "https://www.mcswap-pay.xyz"; // your live domain
 var treasury = "ACgZcmgmAnMDxXxZUo9Zwg2PS6WQLXy63JnnLmJFYxZZ"; // optional affiliate treasury
 var fee = "0"; // optional affiliate fee
 var cleanup = 30000; // cleanup every n miliseconds
-var whitelist = [host];
+var whitelist = ["https://www.mcswap.xyz"];
 
 // *********************************************************************************
 if(host.includes("localhost")){host=host+":3300";}
