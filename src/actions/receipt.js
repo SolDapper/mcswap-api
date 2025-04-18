@@ -1,17 +1,16 @@
 'use strict';
 import {rpc,filter} from '../config.js';
-import Express from 'express';
+import express from 'express';
 import cors from 'cors';
-const receipt = Express.Router();
-receipt.post("/receipt", cors(filter), async(err,req,res)=>{
-// receipt.route('/receipt').post(cors(filter), async(err,req,res)=>{
+const receipt = express();
+receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
     if(err.message){
         res.status(200).json("Access Denied!");
     }
     else{
 
-        const body  = req.body;
-        res.status(200).json(body);
+        // const body  = req.body;
+        res.status(200).json("debug");
         
         // const reference = req.params.reference;
         // if(fs.existsSync("/tmp/"+reference+".txt")){
