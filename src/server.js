@@ -51,13 +51,14 @@ const corsOptions = {
     if (whitelist.includes(origin)) {
       callback(null, true); // Allow the request
     } else {
-      callback(new Error('Not allowed by CORS')); // Deny the request
+      callback(null, false); // Deny the request
     }
   },
   methods: ['GET'], // Specify allowed methods
   credentials: true, // Enable credentials (cookies, authorization headers)
 };
 app.get('/ping', cors(corsOptions), async(req,res,next)=>{
+  
   res.status(200).json("ok");
 });
 app.get("/",(req,res)=>{res.status(200).json("mcswap-api server");});
