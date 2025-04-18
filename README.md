@@ -22,6 +22,7 @@ var host = "https://www.mcswap-pay.xyz"; // your live domain
 var treasury = "ACgZcmgmAnMDxXxZUo9Zwg2PS6WQLXy63JnnLmJFYxZZ"; // optional affiliate treasury
 var fee = "0"; // optional affiliate fee
 var cleanup = 30000; // temporary file cleanup every n miliseconds
+var whitelist = [host]; // array of domains allowed to process receipts
 ```
 
 ## run locally
