@@ -59,7 +59,7 @@ const whitelistFilter = {
 };
 app.get('/ping', cors(whitelistFilter), async(err,req,res,next)=>{
   if(err.message){
-    res.status(200).json(err);
+    res.status(200).json(err.message);
   }
   else{
     res.status(200).json("ok");
