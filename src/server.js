@@ -39,6 +39,8 @@ app.use((req, res, next) => {
 
 // *********************************************************************************
 // include actions
+import { receipt } from './actions/receipt.js';
+app.use("/", receipt);
 import { payment } from './actions/payment.js';
 app.use("/", payment);
 import { scanner } from './actions/scanner.js';
