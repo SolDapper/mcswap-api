@@ -2,7 +2,8 @@
 import {rpc,filter} from '../config.js';
 import Express from 'express';
 const receipt = Express.Router();
-receipt.route('/receipt').post(cors(filter), async(err,req,res)=>{
+receipt.post("/receipt", cors(filter), async(err,req,res)=>{
+// receipt.route('/receipt').post(cors(filter), async(err,req,res)=>{
     if(err.message){
         res.status(200).json("Access Denied!");
     }
