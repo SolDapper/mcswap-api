@@ -1,6 +1,7 @@
 'use strict';
 import {rpc,filter} from '../config.js';
 import Express from 'express';
+import cors from 'cors';
 const receipt = Express.Router();
 receipt.post("/receipt", cors(filter), async(err,req,res)=>{
 // receipt.route('/receipt').post(cors(filter), async(err,req,res)=>{
