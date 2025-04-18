@@ -55,7 +55,7 @@ const configOptions = {
       }
     }
 };
-ping.get('/ping', cors(configOptions), async(req,res)=>{
+app.get('/ping', cors(configOptions), async(req,res)=>{
   res.status(200).json("ok");
 });
 app.get("/",(req,res)=>{res.status(200).json("mcswap-api server");});
