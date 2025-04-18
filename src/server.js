@@ -6,7 +6,7 @@
 
 // *********************************************************************************
 // initialize server
-import {host,cleanup} from './config.js';
+import {host,cleanup,whitelist} from './config.js';
 import open from 'open';
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -48,7 +48,7 @@ app.use("/", scanner);
 // *********************************************************************************
 const corsOptions = {
   origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin)) {
+    if (whitelist.includes(origin)) {
       callback(null, true); // Allow the request
     } else {
       callback(new Error('Not allowed by CORS')); // Deny the request
