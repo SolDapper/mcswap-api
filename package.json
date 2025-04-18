@@ -1,7 +1,7 @@
 {
     "name": "mcswap-api",
-    "version": "0.0.4",
-    "description": "mcswap solana pay api",
+    "version": "0.0.5",
+    "description": "solana pay & email receipt endpoints",
     "main": "src/server.js",
     "type": "module",
     "scripts": {
