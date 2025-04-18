@@ -39,6 +39,8 @@ app.use((req, res, next) => {
 
 // *********************************************************************************
 // include actions
+import { ping } from './actions/ping.js';
+app.use("/", ping);
 import { payment } from './actions/payment.js';
 app.use("/", payment);
 import { scanner } from './actions/scanner.js';
