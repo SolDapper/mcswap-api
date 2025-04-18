@@ -10,7 +10,7 @@ receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
     // }
     // else{
         const body  = req.body;
-        const msg = '';
+        let msg = '';
 
         msg += '<table cellpadding="0" cellspacing="0" width="100%">';
         msg += '<tr>';
