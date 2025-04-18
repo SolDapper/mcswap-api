@@ -6,7 +6,7 @@
 
 // *********************************************************************************
 // initialize server
-import {host,cleanup,whitelist} from './config.js';
+import {host,cleanup,filter} from './config.js';
 import open from 'open';
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -46,18 +46,7 @@ app.use("/", scanner);
 // *********************************************************************************
 
 // *********************************************************************************
-const whitelistFilter = {
-  origin: (origin, callback) => {
-    if (whitelist.includes(origin)) {
-      callback(null, true); // Allow the request
-    } else {
-      callback(new Error('Not allowed by CORS')); // Deny the request
-    }
-  },
-  methods: ['GET'], // Specify allowed methods
-  credentials: true, // Enable credentials (cookies, authorization headers)
-};
-app.get('/ping', cors(whitelistFilter), async(err,req,res,next)=>{
+app.get('/ping', cors(filter), async(err,req,res,next)=>{
   if(err.message){
     res.status(200).json("Access Denied!");
   }
