@@ -46,20 +46,19 @@ app.use("/", scanner);
 // *********************************************************************************
 
 // *********************************************************************************
-// const options = {
-//     origin: function (origin, callback) {
-//       if (whitelist.indexOf(origin) !== -1 || !origin) {
-//         callback(null, true);
-//       } else {
-//         callback(new Error('Not allowed by CORS'));
-//       }
-//     }
-// };
-// ping.get('/ping', cors(options), async(req,res)=>{
-app.get('/ping', async(req,res)=>{
+const configOptions = {
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1 || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    }
+};
+ping.get('/ping', cors(configOptions), async(req,res)=>{
   res.status(200).json("ok");
 });
-app.get("/",(req,res)=>{res.json("mcswap-api server");});
+app.get("/",(req,res)=>{res.status(200).json("mcswap-api server");});
 app.listen(process.env.PORT || 3300, async() => {
   console.log("mcswap-api is running!");
   const clean = setInterval(()=>{
