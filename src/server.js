@@ -46,16 +46,18 @@ app.use("/", scanner);
 // *********************************************************************************
 
 // *********************************************************************************
-const configOptions = {
-    origin: function (origin, callback) {
-      if (whitelist.indexOf(origin) !== -1 || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true); // Allow the request
+    } else {
+      callback(new Error('Not allowed by CORS')); // Deny the request
     }
+  },
+  methods: ['GET'], // Specify allowed methods
+  credentials: true, // Enable credentials (cookies, authorization headers)
 };
-app.get('/ping', cors(configOptions), async(req,res)=>{
+app.get('/ping', cors(corsOptions), async(req,res,next)=>{
   res.status(200).json("ok");
 });
 app.get("/",(req,res)=>{res.status(200).json("mcswap-api server");});
