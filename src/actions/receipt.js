@@ -9,8 +9,8 @@ receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
     }
     else{
 
-        // const body  = req.body;
-        res.status(200).json("debug");
+        const body  = req.body;
+        res.status(200).json(body);
         
         // const reference = req.params.reference;
         // if(fs.existsSync("/tmp/"+reference+".txt")){
