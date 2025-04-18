@@ -18,9 +18,11 @@ receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
             }
         });
         // to: body.Buyer_Email+","+body.Seller_Email,
+        // from: body.Seller_Email,
         let mailOptions = {
-            from: body.Seller_Email,
-            to: body.Buyer_Email,
+            sender: body.Seller_Email,
+            replyTo: body.Seller_Email,
+            to: body.Buyer_Email+","+body.Seller_Email,
             subject: 'Asset Purchase Receipt',
             text: 'Hello from Node.js!',
             html: '<b>Hello from Node.js!</b>'
