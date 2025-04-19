@@ -18,7 +18,7 @@ receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
         msg += '<tr><td>Buyer Email: </td><td width="600">'+body.Buyer_Email+'</td></tr>';
         msg += '<tr><td>Buyer Name: </td><td width="600">'+body.Buyer_Name+'</td></tr>';
         msg += '<tr><td>Buyer Address: </td><td width="600">'+body.Buyer_Address+'</td></tr>';
-        msg += '<tr><td>Image: </td><td width="600">'+body.Image+'</td></tr>';
+        msg += '<tr><td><img width="300" src="'+body.Image+'" /></td></tr>';
         msg += '<tr><td>Format: </td><td width="600">'+body.Format+'</td></tr>';
         msg += '<tr><td>Listing: </td><td width="600">'+body.Listing+'</td></tr>';
         msg += '<tr><td>Seller: </td><td width="600">'+body.Seller+'</td></tr>';
