@@ -12,13 +12,13 @@ receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
         const body  = req.body;
         let msg = '';
         msg += '<table cellpadding="0" cellspacing="0" width="100%">';
+        msg += '<tr><td><img width="300" src="'+body.Image+'" /></td></tr>';
         msg += '<tr><td>Asset Name: </td><td width="600">'+body.Asset_Name+'</td></tr>';
         msg += '<tr><td>Description: </td><td width="600">'+body.Asset_Name+'</td></tr>';
         msg += '<tr><td>Seller Email: </td><td width="600">'+body.Seller_Email+'</td></tr>';
         msg += '<tr><td>Buyer Email: </td><td width="600">'+body.Buyer_Email+'</td></tr>';
         msg += '<tr><td>Buyer Name: </td><td width="600">'+body.Buyer_Name+'</td></tr>';
         msg += '<tr><td>Buyer Address: </td><td width="600">'+body.Buyer_Address+'</td></tr>';
-        msg += '<tr><td><img width="300" src="'+body.Image+'" /></td></tr>';
         msg += '<tr><td>Format: </td><td width="600">'+body.Format+'</td></tr>';
         msg += '<tr><td>Listing: </td><td width="600">'+body.Listing+'</td></tr>';
         msg += '<tr><td>Seller: </td><td width="600">'+body.Seller+'</td></tr>';
