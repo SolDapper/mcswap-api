@@ -20,14 +20,13 @@ receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
         msg += '<tr><td>Buyer Address: </td><td width="600">'+body.Buyer_Address+'</td></tr>';
         msg += '<tr><td>Image: </td><td width="600">'+body.Image+'</td></tr>';
         msg += '<tr><td>Format: </td><td width="600">'+body.Format+'</td></tr>';
-        msg += '<tr><td>From: </td><td width="600">'+body.From+'</td></tr>';
-        msg += '<tr><td>To: </td><td width="600">'+body.To+'</td></tr>';
-        msg += '<tr><td>Token: </td><td width="600">'+body.Token+'</td></tr>';
-        msg += '<tr><td>Mint: </td><td width="600">'+body.Mint+'</td></tr>';
+        msg += '<tr><td>Listing: </td><td width="600">'+body.Listing+'</td></tr>';
+        msg += '<tr><td>Seller: </td><td width="600">'+body.Seller+'</td></tr>';
+        msg += '<tr><td>Buyer: </td><td width="600">'+body.Buyer+'</td></tr>';
+        msg += '<tr><td>Token Symbol: </td><td width="600">'+body.Token+'</td></tr>';
+        msg += '<tr><td>Token Mint: </td><td width="600">'+body.Mint+'</td></tr>';
         msg += '<tr><td>Tokens Paid: </td><td width="600">'+body.Tokens_Paid+'</td></tr>';
         msg += '<tr><td>SOL Paid: </td><td width="600">'+body.SOL_Paid+'</td></tr>';
-        msg += '<tr><td>SOL Paid: </td><td width="600">'+body.SOL_Paid+'</td></tr>';
-        msg += '<tr><td>Listing: </td><td width="600">'+body.Listing+'</td></tr>';
         msg += '<tr><td>Signature: </td><td width="600"><a target="_blank" href="https://solana.fm/tx/'+body.Signature+'">View Transaction</a></td></tr>';
         msg += '</table>';
         let transporter = nodemailer.createTransport({
