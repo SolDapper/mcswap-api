@@ -8,7 +8,7 @@ var host = "https://www.mcswap-pay.xyz"; // your live domain
 var treasury = "ACgZcmgmAnMDxXxZUo9Zwg2PS6WQLXy63JnnLmJFYxZZ"; // optional affiliate treasury
 var fee = "0"; // optional affiliate fee
 var cleanup = 30000; // cleanup every n miliseconds
-var whitelist = ["https://www.mcswap.xyz", "http://localhost:4400"];
+var whitelist = ["https://www.mcswap.xyz"];
 
 // *********************************************************************************
 var filter = {origin:(origin,callback)=>{if(whitelist.includes(origin)){callback(null,true);}else{callback(new Error('Not allowed by CORS'));}},methods:['GET','POST'],credentials: true,};
