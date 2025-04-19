@@ -15,11 +15,11 @@ receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
         msg += '<tr><td colspan="2"><img width="400" src="'+body.Image+'" /></td></tr>';
         msg += '<tr><td width="110">Asset Name: </td><td width="600">'+body.Asset_Name+'</td></tr>';
         msg += '<tr><td width="110">Description: </td><td width="600">'+body.Description+'</td></tr>';
+        msg += '<tr><td width="110">Format: </td><td width="600">'+body.Format+'</td></tr>';
         msg += '<tr><td width="110">Seller Email: </td><td width="600">'+body.Seller_Email+'</td></tr>';
         msg += '<tr><td width="110">Buyer Email: </td><td width="600">'+body.Buyer_Email+'</td></tr>';
         msg += '<tr><td width="110">Buyer Name: </td><td width="600">'+body.Buyer_Name+'</td></tr>';
         msg += '<tr><td width="110">Buyer Address: </td><td width="600">'+body.Buyer_Address+'</td></tr>';
-        msg += '<tr><td width="110">Format: </td><td width="600">'+body.Format+'</td></tr>';
         msg += '<tr><td width="110">Listing: </td><td width="600">'+body.Listing+'</td></tr>';
         msg += '<tr><td width="110">Seller: </td><td width="600">'+body.Seller+'</td></tr>';
         msg += '<tr><td width="110">Buyer: </td><td width="600">'+body.Buyer+'</td></tr>';
@@ -28,6 +28,9 @@ receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
         msg += '<tr><td width="110">Tokens Paid: </td><td width="600">'+body.Tokens_Paid+'</td></tr>';
         msg += '<tr><td width="110">SOL Paid: </td><td width="600">'+body.SOL_Paid+'</td></tr>';
         msg += '<tr><td width="110">Signature: </td><td width="600"><a target="_blank" href="https://solana.fm/tx/'+body.Signature+'">View Transaction</a></td></tr>';
+        const now = new Date();
+        const dateTimeString = now.toLocaleString();
+        msg += '<tr><td width="110">Time: </td><td width="600">'+dateTimeString+'</td></tr>';
         msg += '</table>';
         let transporter = nodemailer.createTransport({
             service: 'gmail', 
