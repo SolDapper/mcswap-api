@@ -21,10 +21,11 @@ receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
         msg += '<tr><td width="110">Buyer Name: </td><td width="600">'+body.Buyer_Name+'</td></tr>';
         msg += '<tr><td width="110">Buyer Address: </td><td width="600">'+body.Buyer_Address+'</td></tr>';
         msg += '<tr><td width="110">Listing: </td><td width="600">'+body.Listing+'</td></tr>';
+        msg += '<tr><td width="110">Mint: </td><td width="600">'+body.Mint+'</td></tr>';
         msg += '<tr><td width="110">Seller: </td><td width="600">'+body.Seller+'</td></tr>';
         msg += '<tr><td width="110">Buyer: </td><td width="600">'+body.Buyer+'</td></tr>';
         msg += '<tr><td width="110">Token Symbol: </td><td width="600">'+body.Token+'</td></tr>';
-        msg += '<tr><td width="110">Token Mint: </td><td width="600">'+body.Mint+'</td></tr>';
+        msg += '<tr><td width="110">Token Mint: </td><td width="600">'+body.Token_Mint+'</td></tr>';
         msg += '<tr><td width="110">Tokens Paid: </td><td width="600">'+body.Tokens_Paid+'</td></tr>';
         msg += '<tr><td width="110">SOL Paid: </td><td width="600">'+body.SOL_Paid+'</td></tr>';
         msg += '<tr><td width="110">Signature: </td><td width="600"><a target="_blank" href="https://solana.fm/tx/'+body.Signature+'">View Transaction</a></td></tr>';
