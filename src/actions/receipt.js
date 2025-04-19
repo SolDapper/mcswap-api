@@ -29,7 +29,7 @@ receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
         msg += '<tr><td width="110">SOL Paid: </td><td width="600">'+body.SOL_Paid+'</td></tr>';
         msg += '<tr><td width="110">Signature: </td><td width="600"><a target="_blank" href="https://solana.fm/tx/'+body.Signature+'">View Transaction</a></td></tr>';
         const now = new Date();
-        const dateTimeString = now.toLocaleString();
+        const dateTimeString = now.toGMTString();
         msg += '<tr><td width="110">Time: </td><td width="600">'+dateTimeString+'</td></tr>';
         msg += '</table>';
         let transporter = nodemailer.createTransport({
