@@ -5,10 +5,10 @@ import cors from 'cors';
 import nodemailer from 'nodemailer'
 const receipt = express();
 receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
-    // if(err.message){
-    //     res.status(200).json("Access Denied!");
-    // }
-    // else{
+    if(err.message){
+        res.status(200).json("Access Denied!");
+    }
+    else{
         const body  = req.body;
         let msg = '';
         msg += '<table cellpadding="0" cellspacing="0">';
@@ -61,6 +61,6 @@ receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
                 res.status(200).json("ok");
             }
         });
-    // }
+    }
 });
 export {receipt};
