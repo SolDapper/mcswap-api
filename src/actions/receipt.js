@@ -11,7 +11,7 @@ receipt.post('/receipt', cors(filter), async(err,req,res,next)=>{
     // else{
         const body  = req.body;
         let msg = '';
-        msg += '<table cellpadding="0" cellspacing="0" width="100%">';
+        msg += '<table cellpadding="0" cellspacing="0">';
         msg += '<tr><td><img width="400" src="'+body.Image+'" /></td></tr>';
         msg += '<tr><td style="width:100px">Asset Name: </td><td width="600">'+body.Asset_Name+'</td></tr>';
         msg += '<tr><td style="width:100px">Description: </td><td width="600">'+body.Asset_Name+'</td></tr>';
